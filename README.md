@@ -1,5 +1,8 @@
 # Akai MPK Mini Plus Controller Script for FL Studio
 
+![Akai_MPK_Mini_Plus](https://user-images.githubusercontent.com/16174954/209699640-413f49f1-ae25-4e8e-917a-39c3ad7e6f8f.png)
+
+
 ## Installation
 
 1. Download the latest [release](../../releases). Make sure to download the ZIP file and not the source code.
