@@ -1,5 +1,5 @@
 # name=Akai MPK Mini Plus
-# url=https://github.com/abbydiode/fl-studio-akai-mpk-mini-plus-script
+# url=https://forum.image-line.com/viewtopic.php?f=1994&t=294205
 # supportedDevices=MPK mini Plus
 
 import transport, general, mixer, midi
@@ -15,9 +15,11 @@ def OnControlChange(event):
     if event.data2 > 0:
         if event.data1 == BUTTON_PREVIOUS or event.data1 == BUTTON_NEXT:
             should_forward = event.data1 == BUTTON_NEXT
+            song_pos = transport.getSongPos(midi.SONGLENGTH_MS)
             numerator = general.getRecPPB() / general.getRecPPQ()
-            ms_per_bar = 60000 / mixer.getCurrentTempo(1) * numerator
-            new_song_pos = transport.getSongPos(midi.SONGLENGTH_MS) + (ms_per_bar if should_forward else -ms_per_bar)
+            ms_per_beat = 60000 / mixer.getCurrentTempo(1)
+            ms_per_bar = ms_per_beat * numerator
+            new_song_pos = round((song_pos + (ms_per_bar if should_forward else -ms_per_bar)) / ms_per_bar) * ms_per_bar
             print(f'{"Forwarding" if should_forward else "Rewinding"} {round(new_song_pos / 1000)}/{transport.getSongLength(midi.SONGLENGTH_S)}s')
             transport.setSongPos(new_song_pos, midi.SONGLENGTH_MS)
         elif event.data1 == BUTTON_PLAY:
