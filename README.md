@@ -10,8 +10,8 @@
 
 | Button | Function            |
 |:------:|---------------------|
-| <<     | Rewind 5 Seconds    |
-| >>     | Forward 5 Seconds   |
+| <<     | Rewind 1 Bar        |
+| >>     | Forward 1 Bar       |
 | Stop   | Stop Playback       |
 | Play   | Play/Pause Playback |
 | Rec    | Toggle Recording    |
