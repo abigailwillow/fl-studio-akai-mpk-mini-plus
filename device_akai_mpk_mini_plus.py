@@ -32,4 +32,6 @@ def OnControlChange(event):
         elif event.data1 == BUTTON_RECORD:
             print(f'{"Disabled" if transport.isRecording() else "Enabled"} recording')
             transport.record()
+        else:
+            return
         event.handled = True
